@@ -14,3 +14,6 @@ app.use('/payment',require('./routes/fund'))
 
 app.listen(5000);
 console.log('radhe radhe');
+
+// git commit -m "first commit"
+// git push -u origin main
