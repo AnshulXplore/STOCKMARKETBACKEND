@@ -159,8 +159,16 @@ router.put("/updatestock", fetchuser, async (req, res) => {
   });
     const saveStock = await stock.save();
    let update=await Stock.findOneAndUpdate({shareName:shareName,user:req.userData.Id},{$set:{updateNumber:sharenam.updateNumber-shareNumber,quantityprice:sharenam.quantityprice-amount,quantity:sharenam.quantity-shareNumber}},{new:true}) 
+
+   let isZero=await Stock.findOne({user: req.userData.Id,shareName:shareName})
+   if(isZero.updateNumber===0){
+     let update=await Stock.updateOne({shareName:shareName,user:req.userData.Id},{$set:{quantityprice:0,quantity:0}},{new:true})
+   }
+
+
+
    let resh=update.updateNumber
-  return res.json(resh)
+  return res.json({resh,number:isZero.updateNumber})
 });
 
 // deleat data
@@ -280,4 +288,13 @@ router.get("/totalsharedetail", fetchuser, async (req, res) => { // IS POINT PAR
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+router.post('/getoneshare',fetchuser,async(req,res)=>{
+  const stock=await Stock.find({user:req.userData.Id,shareName:'IRFC'})
+  let deleat=await Stock.deleteMany({user:req.userData.Id,shareName:"IRFC"})
+
+
+  return res.json({stock,deleat})
+
+})
 module.exports = router;
