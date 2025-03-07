@@ -1,5 +1,6 @@
 // radhe radhe 
 const express=require('express');
+require('dotenv').config()
 const connectToMongo=require('./db');
 const cors=require('cors');
 const app=express();
@@ -7,6 +8,7 @@ app.use(express.json());
 app.use(cors());
 connectToMongo();
 const PORT=process.env.PORT || 8000
+
 
 app.use('/',require('./routes/login'))
 app.use('/userdetail',require('./routes/details'))
