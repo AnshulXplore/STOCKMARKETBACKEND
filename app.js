@@ -7,7 +7,8 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 connectToMongo();
-const PORT=process.env.PORT || 8000
+const PORT=process.env.PORT || 8000;
+console.log(PORT)
 
 
 app.use('/',require('./routes/login'))
@@ -50,7 +51,7 @@ app.post('/create-order', async (req, res) => {
 
 
 
-app.listen(5000);
+app.listen(PORT);
 console.log('radhe radhe');
 
 // git commit -m "first commit"
