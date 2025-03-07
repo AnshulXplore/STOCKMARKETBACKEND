@@ -32,3 +32,6 @@ const paymentSchema = new Schema({
 const Fund=mongoose.model('payment',paymentSchema);// jo ye humne userdetail diya hai iska matlab hai ki us database base main koinse collection main ye store karna hai to ye mongo main ek collection banayega userdetail name se or usme ddata enter karega. iska pehla argument hota hai collection name and second is schema name.
 Fund.createIndexes();  // ek function index bana deta hai yadi hum kise field ko unique rakhte hai to ye ye uske liye alag se indexes banayega or phir agar kise user ne 123 email enter ki to phir or koi user 123 use nahi kar payega.
 module.exports=Fund;       
+
+// add here 
+// add new code
